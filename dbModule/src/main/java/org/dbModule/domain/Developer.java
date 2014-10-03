@@ -1,26 +1,13 @@
 package org.dbModule.domain;
 
-import java.io.Serializable;
 import java.util.List;
 
-public class Project implements Serializable{
+public class Developer extends User{
 	
-	private Integer id;
 	private List<Task> taskList;
-
-	public Project() {
-	}
 	
-	
-	public Integer getId() {
-		return id;
+	public Developer(){
 	}
-
-
-	public void setId(Integer id) {
-		this.id = id;
-	}
-
 
 	public List<Task> getTaskList() {
 		return taskList;
@@ -28,5 +15,6 @@ public class Project implements Serializable{
 
 	public void setTaskList(List<Task> taskList) {
 		this.taskList = taskList;
-	}
+	}	
+	
 }
