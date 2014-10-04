@@ -29,8 +29,7 @@ public class User implements Serializable{
 	public User(){		
 	}
 	
-	public User(Integer id, String login, String password, String name, String surname, Role role) {
-        this.id = id;
+	public User(String login, String password, String name, String surname, Role role) {
         this.login = login;
         this.password = password;
         this.name = name;
