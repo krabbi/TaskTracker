@@ -1,7 +1,9 @@
 package org.dbModule.domain;
 
+import javax.persistence.Entity;
 import java.io.Serializable;
 
+@Entity
 public class Comment implements Serializable{
 	
 	private Integer id;
