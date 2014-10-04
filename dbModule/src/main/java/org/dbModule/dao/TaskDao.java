@@ -7,7 +7,5 @@ public interface TaskDao {
 	void addTask(Task task);
 	void updateTask(Task task);
 	Task getTask(Integer taskId);
-	
-	
 
 }
