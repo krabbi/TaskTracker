@@ -1,6 +1,6 @@
 function Hello($scope, $http) {
-    $http.get('http://rest-service.guides.spring.io/greeting').
+    $http.get('/test2').
             success(function(data) {
-                $scope.greeting = data;
+                $scope.user = data;
             });
 }
