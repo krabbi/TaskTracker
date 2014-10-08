@@ -3,11 +3,18 @@ package org.dbModule.domain;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+
 import java.io.Serializable;
 import java.util.List;
 
@@ -18,7 +25,9 @@ public class Project implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "ID")
 	private Integer id;
-        @OneToMany(mappedBy = "project", cascade = CascadeType.ALL)
+	@Column(name = "NAME")
+	private String name;
+    @OneToMany(mappedBy = "project", cascade = CascadeType.ALL)
 	@Column(name = "TASK_LIST")
 	private List<Task> taskList;
 
@@ -43,4 +52,13 @@ public class Project implements Serializable{
 	public void setTaskList(List<Task> taskList) {
 		this.taskList = taskList;
 	}
+	
+	public String getName(){
+		return name;
+	}
+	
+	public void setName(String name){
+		this.name = name;
+	}
+	
 }

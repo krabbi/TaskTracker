@@ -1,6 +1,10 @@
 package org.dbModule.dao;
 
+
+import java.util.List;
+
 import org.dbModule.domain.Project;
+import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.hibernate.classic.Session;
 import org.springframework.stereotype.Repository;
@@ -37,4 +41,13 @@ public class ProjectDaoImpl implements ProjectDao {
 	Project project = (Project)session.get(Project.class, projectId);
 	return project;
     }
+    
+    @Override
+    public List<Project> getAllProjects() {
+	Session session = sessionFactory.getCurrentSession();
+	Query query = session.createQuery("from Project p");
+    List<Project> projectList = query.list();
+	return projectList;
+    }
+    
 }

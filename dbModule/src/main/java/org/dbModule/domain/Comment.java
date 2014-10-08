@@ -8,6 +8,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.io.Serializable;
 
 @Entity
@@ -17,14 +20,15 @@ public class Comment implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "ID")
 	private Integer id;
-        @Column(name = "COMMENT")
+    @Column(name = "COMMENT")
 	private String comment;
-    	@ManyToOne
+    @ManyToOne
 	@JoinColumn(name = "USER")
 	private User user;
-    	@ManyToOne
+    @ManyToOne
 	@JoinColumn(name = "TASK")
-    	private Task task;
+    @JsonIgnore
+    private Task task;
 	
 	public Comment(){
 	}
