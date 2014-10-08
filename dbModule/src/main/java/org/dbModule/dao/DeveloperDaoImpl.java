@@ -8,6 +8,8 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
+import org.hibernate.Query;
+import java.util.List;
 
 @Repository(value = "developerDao")
 @Transactional(propagation = Propagation.MANDATORY)
@@ -42,5 +44,13 @@ public class DeveloperDaoImpl implements DeveloperDao {
     public void editDeveloper(Developer developer) {
 	Session session = sessionFactory.getCurrentSession();
 	session.update(developer);
+    }
+
+    @Override
+    public List<Developer> getAllDevelopers() {
+	Session session = sessionFactory.getCurrentSession();
+	Query query = session.createQuery("from Developer d");
+	List<Developer> developerList = query.list();
+	return developerList;
     }
 }

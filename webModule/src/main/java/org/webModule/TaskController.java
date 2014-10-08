@@ -1,7 +1,5 @@
 package org.webModule;
 
-import java.util.List;
-
 import javax.annotation.Resource;
 
 import org.dbModule.domain.Task;
@@ -15,25 +13,30 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller(value = "taskController")
 public class TaskController {
-	
-	@Resource(name = "taskService")
-	TaskService taskService;
-	
-	@RequestMapping(value = "/rest/task/{taskId}", method = RequestMethod.GET)
-    public @ResponseBody Task getTask(@PathVariable String taskId){
-		Integer id = null;
-		try {
-			id = Integer.parseInt(taskId);
-		} catch (NumberFormatException e) {
-			return null;
-		}
-		return taskService.getInitializedTask(id);
-    }
-	
-	@RequestMapping(value = "/saveTask", method = RequestMethod.POST)	
-	public  @ResponseBody String saveTask0(@RequestBody Task task)   {		
-		taskService.addTask(task);
-		return "index";
+
+    @Resource(name = "taskService")
+    TaskService taskService;
+
+    @RequestMapping(value = "/rest/task/{taskId}", method = RequestMethod.GET)
+    public
+    @ResponseBody
+    Task getTask(@PathVariable String taskId) {
+	Integer id;
+	try {
+	    id = Integer.parseInt(taskId);
+	} catch (NumberFormatException e) {
+	    return null;
 	}
+	return taskService.getInitializedTask(id);
+    }
+
+    @RequestMapping(value = "/saveTask", method = RequestMethod.POST, consumes =  "application/json")
+    public
+    @ResponseBody
+    String saveTask(@RequestBody Task task) {
+	System.out.println("------------------------==================================RABOTAET MUDAK=================================------------------------------");
+	taskService.addTask(task);
+	return "index";
+    }
 
 }

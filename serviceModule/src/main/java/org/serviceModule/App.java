@@ -4,7 +4,9 @@ import org.dbModule.dao.ProjectDao;
 import org.dbModule.domain.Project;
 import org.dbModule.domain.Role;
 import org.dbModule.domain.Task;
+import org.dbModule.domain.TaskStatus;
 import org.dbModule.domain.User;
+import org.serviceModule.service.DeveloperService;
 import org.serviceModule.service.ProjectService;
 import org.serviceModule.service.TaskService;
 import org.serviceModule.service.UserService;
@@ -48,30 +50,37 @@ public class App
 	System.out.println(  );
 	System.out.println(  );
 	System.out.println(  );
-	
 
-	
+
+	DeveloperService developerService = context.getBean("developerService", DeveloperService.class);
+
 	Task task1 = new Task();
 	task1.setName("First Task");
 	task1.setProject(projectService.getProject(1));
+	task1.setDeveloper(developerService.getDeveloper(5));
+	task1.setStatus(TaskStatus.OPEN);
 	Task task2 = new Task();
 	task2.setName("Second Task");
 	task2.setProject(projectService.getProject(1));
+	task2.setDeveloper(developerService.getDeveloper(5));
+	task2.setStatus(TaskStatus.OPEN);
 	Task task3 = new Task();
 	task3.setName("Third Task");
 	task3.setProject(projectService.getProject(1));
+	task3.setDeveloper(developerService.getDeveloper(5));
+	task3.setStatus(TaskStatus.OPEN);
 	Task task4 = new Task();
 	task4.setName("Fourth Task");
 	task4.setProject(projectService.getProject(1));
+	task4.setDeveloper(developerService.getDeveloper(5));
+	task4.setStatus(TaskStatus.OPEN);
 	
 	TaskService taskService = context.getBean("taskService", TaskService.class);
 	taskService.addTask(task1);
 	taskService.addTask(task2);
 	taskService.addTask(task3);
 	taskService.addTask(task4);
-	
-	
-	
+
 	User user = new User("senior","pomidor","boris","kot", Role.DEVELOPER);
 	UserService userService = context.getBean("userService", UserService.class);
 	userService.addUser(user);

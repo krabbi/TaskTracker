@@ -10,7 +10,7 @@ public enum TaskStatus {
     REOPENED,
     IN_PROGRESS;
 
-    public static List<TaskStatus> list(){
+    public static List<TaskStatus> list() {
 	return Arrays.asList(values());
     }
 

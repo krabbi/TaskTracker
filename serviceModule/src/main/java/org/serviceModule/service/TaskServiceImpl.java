@@ -1,6 +1,7 @@
 package org.serviceModule.service;
 
 import org.dbModule.dao.DeveloperDao;
+import org.dbModule.dao.ProjectDao;
 import org.dbModule.dao.TaskDao;
 import org.dbModule.domain.Task;
 import org.hibernate.Hibernate;
@@ -21,9 +22,11 @@ public class TaskServiceImpl implements TaskService {
     @Resource(name = "developerDao")
     private DeveloperDao developerkDao;
 
+    @Resource(name = "projectDao")
+    private ProjectDao projectDao;
+
     @Override
     public void addTask(Task task) {
-    	task.setDeveloper(developerkDao.getDeveloper(task.getDeveloper().getId()));
     	taskDao.addTask(task);
     }
 

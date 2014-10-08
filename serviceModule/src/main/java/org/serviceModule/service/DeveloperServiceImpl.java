@@ -7,6 +7,7 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 
 @Component(value = "developerService")
@@ -34,5 +35,10 @@ public class DeveloperServiceImpl implements DeveloperService {
     @Override
     public void editDeveloper(Developer developer) {
 	developerDao.editDeveloper(developer);
+    }
+
+    @Override
+    public List<Developer> getAllDevelopers() {
+	return developerDao.getAllDevelopers();
     }
 }

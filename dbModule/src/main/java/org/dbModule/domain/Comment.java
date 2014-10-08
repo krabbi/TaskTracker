@@ -15,50 +15,50 @@ import java.io.Serializable;
 
 @Entity
 @Table(name = "COMMENT")
-public class Comment implements Serializable{
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "ID")
-	private Integer id;
+public class Comment implements Serializable {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "ID")
+    private Integer id;
     @Column(name = "COMMENT")
-	private String comment;
+    private String comment;
     @ManyToOne
-	@JoinColumn(name = "USER")
-	private User user;
+    @JoinColumn(name = "USER")
+    private User user;
     @ManyToOne
-	@JoinColumn(name = "TASK")
+    @JoinColumn(name = "TASK")
     @JsonIgnore
     private Task task;
-	
-	public Comment(){
-	}
 
-	
-	public Integer getId() {
-		return id;
-	}
+    public Comment() {
+    }
 
 
-	public void setId(Integer id) {
-		this.id = id;
-	}
+    public Integer getId() {
+	return id;
+    }
 
 
-	public String getComment() {
-		return comment;
-	}
+    public void setId(Integer id) {
+	this.id = id;
+    }
 
-	public void setComment(String comment) {
-		this.comment = comment;
-	}
 
-	public User getUser() {
-		return user;
-	}
+    public String getComment() {
+	return comment;
+    }
 
-	public void setUser(User user) {
-		this.user = user;
-	}
+    public void setComment(String comment) {
+	this.comment = comment;
+    }
 
-	
+    public User getUser() {
+	return user;
+    }
+
+    public void setUser(User user) {
+	this.user = user;
+    }
+
+
 }

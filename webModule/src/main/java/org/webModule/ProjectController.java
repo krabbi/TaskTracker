@@ -15,28 +15,32 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller(value = "projectController")
 public class ProjectController {
-	
-	@Resource(name = "projectService")	
-	private ProjectService projectService;
-	
-	@RequestMapping(value = "/rest/projects", method = RequestMethod.GET)
-    public @ResponseBody List<Project> getAllProjects(){
-		List<Project> projectList = projectService.getAllProjects();
-		for(Project project: projectList){
-			project.setTaskList(null);
-		}
+
+    @Resource(name = "projectService")
+    private ProjectService projectService;
+
+    @RequestMapping(value = "/rest/projects", method = RequestMethod.GET)
+    public
+    @ResponseBody
+    List<Project> getAllProjects() {
+	List<Project> projectList = projectService.getAllProjects();
+	for (Project project : projectList) {
+	    project.setTaskList(null);
+	}
 	return projectList;
     }
-	
-	@RequestMapping(value = "/rest/project/{projectId}", method = RequestMethod.GET)
-    public @ResponseBody Project getProject(@PathVariable String projectId){
-		Integer id = null;
-		try {
-			id = Integer.parseInt(projectId);
-		} catch (NumberFormatException e) {
-			return null;
-		}
-		return projectService.getInitializedProject(id);
+
+    @RequestMapping(value = "/rest/project/{projectId}", method = RequestMethod.GET)
+    public
+    @ResponseBody
+    Project getProject(@PathVariable String projectId) {
+	Integer id;
+	try {
+	    id = Integer.parseInt(projectId);
+	} catch (NumberFormatException e) {
+	    return null;
+	}
+	return projectService.getInitializedProject(id);
     }
 
 }

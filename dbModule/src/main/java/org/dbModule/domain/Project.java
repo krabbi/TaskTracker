@@ -20,45 +20,45 @@ import java.util.List;
 
 @Entity
 @Table(name = "PROJECT")
-public class Project implements Serializable{
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "ID")
-	private Integer id;
-	@Column(name = "NAME")
-	private String name;
+public class Project implements Serializable {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "ID")
+    private Integer id;
+    @Column(name = "NAME")
+    private String name;
     @OneToMany(mappedBy = "project", cascade = CascadeType.ALL)
-	@Column(name = "TASK_LIST")
-	private List<Task> taskList;
+    @Column(name = "TASK_LIST")
+    private List<Task> taskList;
 
-	public Project() {
-	}
-	
-	
-	public Integer getId() {
-		return id;
-	}
+    public Project() {
+    }
 
 
-	public void setId(Integer id) {
-		this.id = id;
-	}
+    public Integer getId() {
+	return id;
+    }
 
 
-	public List<Task> getTaskList() {
-		return taskList;
-	}
+    public void setId(Integer id) {
+	this.id = id;
+    }
 
-	public void setTaskList(List<Task> taskList) {
-		this.taskList = taskList;
-	}
-	
-	public String getName(){
-		return name;
-	}
-	
-	public void setName(String name){
-		this.name = name;
-	}
-	
+
+    public List<Task> getTaskList() {
+	return taskList;
+    }
+
+    public void setTaskList(List<Task> taskList) {
+	this.taskList = taskList;
+    }
+
+    public String getName() {
+	return name;
+    }
+
+    public void setName(String name) {
+	this.name = name;
+    }
+
 }

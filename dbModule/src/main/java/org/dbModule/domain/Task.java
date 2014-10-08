@@ -14,6 +14,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 import org.hibernate.annotations.LazyCollection;
@@ -26,48 +27,48 @@ import java.util.List;
 
 @Entity
 @Table(name = "TASK")
-public class Task implements Serializable{
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "ID")
-	private Integer id;
-	@Column(name = "NAME")
-	private String name;
-	@ManyToOne
-	@JoinColumn(name = "DEVELOPER")
-	private Developer developer;
-    @OneToMany(mappedBy = "task", cascade = CascadeType.ALL)
-	@Column(name = "COMMENT")
-	private List<Comment> comment;
-    @Enumerated(EnumType.STRING)
-	@Column(name = "STATUS")
-	private TaskStatus status;
+public class Task implements Serializable {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "ID")
+    private Integer id;
+    @Column(name = "NAME")
+    private String name;
     @ManyToOne
-	@JoinColumn(name = "PROJECT")
+    @JoinColumn(name = "DEVELOPER")
+    private Developer developer;
+    @OneToMany(mappedBy = "task", cascade = CascadeType.ALL)
+    @Column(name = "COMMENT")
+    private List<Comment> comment;
+    @Enumerated(EnumType.STRING)
+    @Column(name = "STATUS")
+    private TaskStatus status;
+    @ManyToOne
+    @JoinColumn(name = "PROJECT")
     @JsonIgnore
     private Project project;
-	
-	public Task(){
-	}
 
-	
-	public Integer getId() {
-		return id;
-	}
+    public Task() {
+    }
 
 
-	public void setId(Integer id) {
-		this.id = id;
-	}
+    public Integer getId() {
+	return id;
+    }
 
 
-	public Developer getDeveloper() {
-		return developer;
-	}
+    public void setId(Integer id) {
+	this.id = id;
+    }
 
-	public void setDeveloper(Developer developer) {
-		this.developer = developer;
-	}
+
+    public Developer getDeveloper() {
+	return developer;
+    }
+
+    public void setDeveloper(Developer developer) {
+	this.developer = developer;
+    }
 
     public List<Comment> getComment() {
 	return comment;
@@ -78,27 +79,29 @@ public class Task implements Serializable{
     }
 
     public TaskStatus getStatus() {
-		return status;
-	}
+	return status;
+    }
 
 
-	public void setStatus(TaskStatus status) {
-		this.status = status;
-	}
+    public void setStatus(TaskStatus status) {
+	this.status = status;
+    }
 
+    @JsonIgnore
     public Project getProject() {
 	return project;
     }
 
+    @JsonProperty
     public void setProject(Project project) {
 	this.project = project;
     }
-	
-	public String getName(){
-		return name;
-	}
-	
-	public void setName(String name){
-		this.name = name;
-	}
+
+    public String getName() {
+	return name;
+    }
+
+    public void setName(String name) {
+	this.name = name;
+    }
 }
